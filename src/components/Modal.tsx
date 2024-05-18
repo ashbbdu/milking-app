@@ -2,17 +2,29 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface TotalMilkModal {
-    header : string,
-    label : string,
-    cancelBtnText : string,
-    confirmBtnText : string,
-    totalMilk : number,
-    setTotalMilk : () => void
-    pause : () => void
+  header: string;
+  label: string;
+  cancelBtnText: string;
+  confirmBtnText: string;
+  totalMilk: number;
+  setTotalMilk: () => void;
+  pause: () => void;
 }
 
-const Modal = ({header , label , cancelBtnText , confirmBtnText , totalMilk , setTotalMilk , pause , pauseBtn , setPauseBtn} : TotalMilkModal ) => {
-  const navigate = useNavigate()
+const Modal = ({
+  header,
+  label,
+  cancelBtnText,
+  confirmBtnText,
+  totalMilk,
+  setTotalMilk,
+  pause,
+  pauseBtn,
+  setPauseBtn,
+  handleTableData,
+  navigation
+}: TotalMilkModal) => {
+  const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState<Boolean>(false);
   return (
@@ -22,8 +34,8 @@ const Modal = ({header , label , cancelBtnText , confirmBtnText , totalMilk , se
         type="button"
         onClick={() => {
           setShowModal(true);
-          pause()
-          setPauseBtn(true)
+          pause();
+          setPauseBtn(true);
         }}
       >
         Stop
@@ -34,9 +46,7 @@ const Modal = ({header , label , cancelBtnText , confirmBtnText , totalMilk , se
             <div className="relative w-auto my-6 mx-auto max-w-2xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3 className="text-xl font-semibold text-black">
-                   {header}
-                  </h3>
+                  <h3 className="text-xl font-semibold text-black">{header}</h3>
                 </div>
 
                 <div className="relative p-6 flex-auto">
@@ -56,32 +66,28 @@ const Modal = ({header , label , cancelBtnText , confirmBtnText , totalMilk , se
                       required
                       onChange={(e) => setTotalMilk(e.target.value)}
                     />
-                     <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => 
-                        setShowModal(false)
-
-                    }
-                  >
-                    {cancelBtnText}
-                  </button>
-                  <button
-                    className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
-                    type="button"
-                    onClick={() => {
-                      setShowModal(false);
-                      navigate("/history")
-                    }}
-                  >
-                    {confirmBtnText}
-                  </button>
-                </div>
+                    <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                      <button
+                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => setShowModal(false)}
+                      >
+                        {cancelBtnText}
+                      </button>
+                      <button
+                        className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
+                        type="button"
+                        onClick={() => {
+                          setShowModal(false);
+                          handleTableData();
+                          navigate("/history");
+                        }}
+                      >
+                        {confirmBtnText}
+                      </button>
+                    </div>
                   </form>
                 </div>
-
-               
               </div>
             </div>
           </div>

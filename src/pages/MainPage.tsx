@@ -19,6 +19,21 @@ const MainPage = () => {
     reset,
   } = useStopwatch({ autoStart: false });
 
+  const handleTableData = () => {
+    const milkingDetails = {
+      totalDuration: totalSeconds,
+      totalMilk,
+      currentDate: "18/05/2024",
+      startTime: "12:40:23 PM",
+      endTime: "12:40:56 PM",
+    };
+    const details = JSON.parse(localStorage.getItem("details")) || "";
+    localStorage.setItem(
+      "details",
+      JSON.stringify([milkingDetails, ...details])
+    );
+  };
+
   return (
     <div>
       <div className="text-center">
@@ -79,6 +94,7 @@ const MainPage = () => {
             pause={pause}
             pauseBtn={pauseBtn}
             setPauseBtn={setPauseBtn}
+            handleTableData={handleTableData}
           />
         )}
       </div>
