@@ -6,7 +6,7 @@ import { formatTime } from "../utils/formatTime";
 const MainPage = () => {
   const [status, setStatus] = useState<String>("Not running");
   const [pauseBtn, setPauseBtn] = useState<Boolean>(false);
-
+  const [totalMilk, setTotalMilk] = useState<number>(0);
   const {
     totalSeconds,
     seconds,
@@ -21,7 +21,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <div style={{ textAlign: "center" }}>
+      <div className="text-center">
         {status === "Not running" ? (
           <div></div>
         ) : (
@@ -74,6 +74,11 @@ const MainPage = () => {
             label={"Please Enter the liters of milk"}
             cancelBtnText={"Cancel"}
             confirmBtnText={"Submit"}
+            totalMilk={totalMilk}
+            setTotalMilk={setTotalMilk}
+            pause={pause}
+            pauseBtn={pauseBtn}
+            setPauseBtn={setPauseBtn}
           />
         )}
       </div>
