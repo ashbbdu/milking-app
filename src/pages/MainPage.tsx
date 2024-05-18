@@ -32,15 +32,12 @@ const MainPage = () => {
             <span className="">{formatTime(seconds)}</span>
           </div>
         )}
-        {/* Total Seconds : {totalSeconds}
-        <p>{isRunning ? "Running" : "Not running"}</p> */}
         {status === "Running" ? (
           <>
             {pauseBtn ? (
               <button
                 onClick={() => {
                   start();
-                  // play();
                   setPauseBtn((prev) => !prev);
                 }}
                 className="mt-4 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
