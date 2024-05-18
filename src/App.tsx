@@ -2,7 +2,7 @@ import './App.css'
 
 function App() {
   return (
-    <div>Milking Tracker App</div>
+    <div className='text-2xl bg-green-100 text-black'>Milking Tracker App</div>
   )
 }
 
