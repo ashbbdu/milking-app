@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useStopwatch } from "react-timer-hook";
+import Modal from "../components/Modal";
 import { formatTime } from "../utils/formatTime";
 
 const MainPage = () => {
- const [status, setStatus] = useState<String>("Not running");
+  const [status, setStatus] = useState<String>("Not running");
   const [pauseBtn, setPauseBtn] = useState<Boolean>(false);
 
   const {
@@ -17,7 +18,6 @@ const MainPage = () => {
     pause,
     reset,
   } = useStopwatch({ autoStart: false });
-
 
   return (
     <div>
@@ -71,18 +71,17 @@ const MainPage = () => {
             Start Milking
           </button>
         )}
-      {status === "Running" && (   <button
-            type="button"
-            onClick={() => {
-              stop()
-            }}
-            className="mt-4 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
-          >
-            Stop
-          </button>)}
+        {status === "Running" && (
+          <Modal
+            header={"Milk Amount (In Litres)"}
+            label={"Please Enter the liters of milk"}
+            cancelBtnText={"Cancel"}
+            confirmBtnText={"Submit"}
+          />
+        )}
       </div>
     </div>
   );
-}
+};
 
-export default MainPage
+export default MainPage;
