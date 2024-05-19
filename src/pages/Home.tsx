@@ -1,6 +1,9 @@
+import useSound from "use-sound"
 import MainPage from "./MainPage"
+import SoothingAudio from "../assets/soothing.mp3"
 
 const Home = () => {
+    const [play , { pause , stop }] = useSound(SoothingAudio)
   return (
     <div className="flex flex-col items-center justify-center px-4 ">
     <div className="text-3xl text-center mt-40">
@@ -8,7 +11,7 @@ const Home = () => {
     </div>
     <div></div>
     <div className="mt-30">
-      <MainPage />
+      <MainPage play={play} pauseSound={pause} stop={stop} />
     </div>
   </div>
   )

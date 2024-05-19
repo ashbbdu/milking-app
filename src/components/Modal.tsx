@@ -22,7 +22,6 @@ const Modal = ({
   pauseBtn,
   setPauseBtn,
   handleTableData,
-  navigation
 }: TotalMilkModal) => {
   const navigate = useNavigate();
 

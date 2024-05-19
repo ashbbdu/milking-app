@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useStopwatch } from "react-timer-hook";
 import Modal from "../components/Modal";
+import { convertDate, convertSecondsToTimeFormat, time } from "../utils/dateConvertor";
 import { formatTime } from "../utils/formatTime";
 
-const MainPage = () => {
+const MainPage = ({play, pauseSound , stop} : any) => {
   const [status, setStatus] = useState<String>("Not running");
   const [pauseBtn, setPauseBtn] = useState<Boolean>(false);
   const [totalMilk, setTotalMilk] = useState<number>(0);
+  const [startTime, setStartTime] = useState<String>("");
   const {
     totalSeconds,
     seconds,
@@ -19,13 +21,21 @@ const MainPage = () => {
     reset,
   } = useStopwatch({ autoStart: false });
 
+  const currentDate = convertDate();
+  const endTime = time()
+
+  const startTimeFn = () => {
+    let startTime = time();
+    setStartTime(startTime);
+  };
+
   const handleTableData = () => {
     const milkingDetails = {
-      totalDuration: totalSeconds,
+      totalDuration: convertSecondsToTimeFormat(totalSeconds),
       totalMilk,
-      currentDate: "18/05/2024",
-      startTime: "12:40:23 PM",
-      endTime: "12:40:56 PM",
+      currentDate,
+      startTime,
+      endTime,
     };
     const details = JSON.parse(localStorage.getItem("details")) || "";
     localStorage.setItem(
@@ -77,6 +87,7 @@ const MainPage = () => {
             onClick={() => {
               start();
               setStatus("Running");
+              startTimeFn()
             }}
             className="mt-4 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
           >
