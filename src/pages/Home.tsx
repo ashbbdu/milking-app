@@ -1,8 +1,9 @@
 import useSound from "use-sound"
 import MainPage from "./MainPage"
 import SoothingAudio from "../assets/soothing.mp3"
+import { MilkinSession } from "../utils/modals/Milking.modal"
 
-const Home = ({setMilkingSession} : any) => {
+const Home = ({setMilkingSession} : MilkinSession) => {
     const [play , { pause , stop }] = useSound(SoothingAudio)
   return (
     <div className="flex flex-col items-center justify-center px-4 ">

@@ -6,7 +6,7 @@ export interface TotalMilkModal {
     confirmBtnText: string;
     totalMilk: number;
     setTotalMilk: (one: number) => void;
-    setMilkingSession : () =>   void;
+    setMilkingSession : (arg : boolean) =>   void;
     endTimeFn : () => void;
     pause: () => void;
     pauseBtn: boolean,
@@ -14,4 +14,8 @@ export interface TotalMilkModal {
     handleTableData : () => void,
     pauseSound: (id?: string) => void,
     stop : (id?: string) => void
+  }
+
+  export interface MilkinSession {
+    setMilkingSession : (arg : boolean) => void;
   }
