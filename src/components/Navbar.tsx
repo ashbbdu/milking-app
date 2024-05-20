@@ -18,7 +18,7 @@ const Navbar = ({milkingSession} : any) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-            <div className="pointer" onClick={handleNavigation}>
+            <div className="cursor-pointer" onClick={handleNavigation}>
                 Milking History
             </div>
          

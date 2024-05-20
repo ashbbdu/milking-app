@@ -78,6 +78,7 @@ const Modal = ({
                           navigate("/history");
                           stop()
                           setMilkingSession(false)
+                        //   endTimeFn()
                         }}
                       >
                         {confirmBtnText}
