@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TotalMilkModal } from "../utils/modals/Milking.modal";
 
-interface TotalMilkModal {
-  header: string;
-  label: string;
-  cancelBtnText: string;
-  confirmBtnText: string;
-  totalMilk: number;
-  setTotalMilk: () => void;
-  pause: () => void;
+interface TableData {
+    totalDuration: string
+    totalMilk : string,
+    currentDate : string,
+    startTime : string,
+    endTime : string,
 }
+
 
 const Modal = ({
   header,
@@ -22,6 +22,8 @@ const Modal = ({
   pauseBtn,
   setPauseBtn,
   handleTableData,
+  pauseSound,
+  stop
 }: TotalMilkModal) => {
   const navigate = useNavigate();
 
@@ -35,6 +37,7 @@ const Modal = ({
           setShowModal(true);
           pause();
           setPauseBtn(true);
+          pauseSound()
         }}
       >
         Stop
@@ -63,7 +66,7 @@ const Modal = ({
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Enter In Liters"
                       required
-                      onChange={(e) => setTotalMilk(e.target.value)}
+                      onChange={(e) => setTotalMilk(parseInt(e.target.value))}
                     />
                     <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                       <button
@@ -80,6 +83,7 @@ const Modal = ({
                           setShowModal(false);
                           handleTableData();
                           navigate("/history");
+                          stop()
                         }}
                       >
                         {confirmBtnText}

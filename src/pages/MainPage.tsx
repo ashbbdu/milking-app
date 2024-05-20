@@ -6,7 +6,7 @@ import { formatTime } from "../utils/formatTime";
 
 const MainPage = ({play, pauseSound , stop} : any) => {
   const [status, setStatus] = useState<String>("Not running");
-  const [pauseBtn, setPauseBtn] = useState<Boolean>(false);
+  const [pauseBtn, setPauseBtn] = useState<boolean>(false);
   const [totalMilk, setTotalMilk] = useState<number>(0);
   const [startTime, setStartTime] = useState<String>("");
   const {
@@ -37,7 +37,8 @@ const MainPage = ({play, pauseSound , stop} : any) => {
       startTime,
       endTime,
     };
-    const details = JSON.parse(localStorage.getItem("details")) || "";
+    const storageData = localStorage.getItem("details");
+    const details = storageData !== null ? JSON.parse(storageData) : [];
     localStorage.setItem(
       "details",
       JSON.stringify([milkingDetails, ...details])
@@ -64,6 +65,7 @@ const MainPage = ({play, pauseSound , stop} : any) => {
                 onClick={() => {
                   start();
                   setPauseBtn((prev) => !prev);
+                  play()
                 }}
                 className="mt-4 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
               >
@@ -74,6 +76,7 @@ const MainPage = ({play, pauseSound , stop} : any) => {
                 onClick={() => {
                   pause();
                   setPauseBtn((prev) => !prev);
+                  pauseSound()
                 }}
                 className="mt-4 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
               >
@@ -88,6 +91,7 @@ const MainPage = ({play, pauseSound , stop} : any) => {
               start();
               setStatus("Running");
               startTimeFn()
+              play()
             }}
             className="mt-4 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
           >
@@ -96,6 +100,8 @@ const MainPage = ({play, pauseSound , stop} : any) => {
         )}
         {status === "Running" && (
           <Modal
+            pauseSound={pauseSound}
+            stop={stop}
             header={"Milk Amount (In Litres)"}
             label={"Please Enter the liters of milk"}
             cancelBtnText={"Cancel"}

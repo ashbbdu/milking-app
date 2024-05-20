@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-pink-500 w-full h-[100vh]">
+    <div id="main" className="bg-gradient-to-r from-blue-500 to-pink-500 w-full h-[100vh]">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

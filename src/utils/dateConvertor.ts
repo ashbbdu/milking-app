@@ -14,7 +14,8 @@ export const convertDate = () => {
         hour12: true
     });
     const date = formattedDate.split(",")
-    return date[0];
+    const time = formattedDate.split(",")
+    return [date[0] , time[1]];
 };
 
 
