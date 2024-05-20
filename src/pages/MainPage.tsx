@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStopwatch } from "react-timer-hook";
 import Modal from "../components/Modal";
-import { convertDate, convertSecondsToTimeFormat, time } from "../utils/dateConvertor";
+import { convertDate, convertSecondsToTimeFormat, time , dateAndTime } from "../utils/dateConvertor";
 import { formatTime } from "../utils/formatTime";
 
 const MainPage = ({play, pauseSound , stop} : any) => {
@@ -15,17 +15,15 @@ const MainPage = ({play, pauseSound , stop} : any) => {
     minutes,
     hours,
     days,
-    isRunning,
     start,
     pause,
-    reset,
   } = useStopwatch({ autoStart: false });
 
-  const currentDate = convertDate();
-  const endTime = time()
+  const currentDate = dateAndTime()[0];
+  const endTime = dateAndTime()[1]
 
   const startTimeFn = () => {
-    let startTime = time();
+    let startTime = dateAndTime()[1];
     setStartTime(startTime);
   };
 
