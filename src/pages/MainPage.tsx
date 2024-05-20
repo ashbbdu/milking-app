@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStopwatch } from "react-timer-hook";
 import Modal from "../components/Modal";
-import { convertDate, convertSecondsToTimeFormat, time , dateAndTime } from "../utils/dateConvertor";
+import { convertSecondsToTimeFormat , dateAndTime } from "../utils/dateConvertor";
 import { formatTime } from "../utils/formatTime";
 
 const MainPage = ({play, pauseSound , stop} : any) => {
