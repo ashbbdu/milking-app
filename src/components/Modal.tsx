@@ -66,12 +66,7 @@ const Modal = ({
                     {totalMilk <= 0 ? (
                       <div className="text-red-600 my-1">*{error}</div>
                     ) : (
-                      <div
-                        className="text-red-600 my-2  py-2"
-                        style={{ visibility: "hidden" }}
-                      >
-                        *{error}
-                      </div>
+                      <div>*{error}</div>
                     )}
                     <div className="mt-6 flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                       <button
