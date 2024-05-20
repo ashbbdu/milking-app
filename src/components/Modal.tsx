@@ -2,15 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TotalMilkModal } from "../utils/modals/Milking.modal";
 
-interface TableData {
-    totalDuration: string
-    totalMilk : string,
-    currentDate : string,
-    startTime : string,
-    endTime : string,
-}
-
-
 const Modal = ({
   header,
   label,
@@ -19,9 +10,9 @@ const Modal = ({
   totalMilk,
   setTotalMilk,
   pause,
-  pauseBtn,
   setPauseBtn,
   handleTableData,
+  endTimeFn,
   pauseSound,
   stop
 }: TotalMilkModal) => {
@@ -38,6 +29,7 @@ const Modal = ({
           pause();
           setPauseBtn(true);
           pauseSound()
+          endTimeFn()
         }}
       >
         Stop

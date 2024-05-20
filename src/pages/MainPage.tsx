@@ -9,6 +9,7 @@ const MainPage = ({play, pauseSound , stop} : any) => {
   const [pauseBtn, setPauseBtn] = useState<boolean>(false);
   const [totalMilk, setTotalMilk] = useState<number>(0);
   const [startTime, setStartTime] = useState<String>("");
+  const [endTime , setEndTime] = useState<string>("")
   const {
     totalSeconds,
     seconds,
@@ -20,7 +21,10 @@ const MainPage = ({play, pauseSound , stop} : any) => {
   } = useStopwatch({ autoStart: false });
 
   const currentDate = dateAndTime()[0];
-  const endTime = dateAndTime()[1]
+  const endTimeFn = () => {
+    let endTime = dateAndTime()[1];
+    setEndTime(endTime)
+  }
 
   const startTimeFn = () => {
     let startTime = dateAndTime()[1];
@@ -108,6 +112,7 @@ const MainPage = ({play, pauseSound , stop} : any) => {
             setTotalMilk={setTotalMilk}
             pause={pause}
             pauseBtn={pauseBtn}
+            endTimeFn={endTimeFn}
             setPauseBtn={setPauseBtn}
             handleTableData={handleTableData}
           />

@@ -6,6 +6,7 @@ export interface TotalMilkModal {
     confirmBtnText: string;
     totalMilk: number;
     setTotalMilk: (one: number) => void;
+    endTimeFn : () => void;
     pause: () => void;
     pauseBtn: boolean,
     setPauseBtn: (bool : boolean) => void,
