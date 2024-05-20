@@ -10,6 +10,7 @@ const MainPage = ({play, pauseSound , stop , setMilkingSession} : any) => {
   const [totalMilk, setTotalMilk] = useState<number>(0);
   const [startTime, setStartTime] = useState<String>("");
   const [endTime , setEndTime] = useState<string>("")
+  const [error ] = useState<string>("Milk quantity should be greater than 0 litres)")
   const {
     totalSeconds,
     seconds,
@@ -117,6 +118,7 @@ const MainPage = ({play, pauseSound , stop , setMilkingSession} : any) => {
             endTimeFn={endTimeFn}
             setPauseBtn={setPauseBtn}
             handleTableData={handleTableData}
+            error={error}
           />
         )}
       </div>

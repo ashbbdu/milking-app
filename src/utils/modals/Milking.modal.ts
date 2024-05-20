@@ -14,6 +14,7 @@ export interface TotalMilkModal {
     handleTableData : () => void,
     pauseSound: (id?: string) => void,
     stop : (id?: string) => void
+    error : string
   }
 
   export interface MilkinSession {

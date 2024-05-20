@@ -1,1 +1,1 @@
-export const milkingTableHeaderData = ["Milking Date" , "Start Time" , "End Time" , "Milking Duration (without pause)" , "Total Milk"]
+export const milkingTableHeaderData = ["Milking Date" , "Start Time" , "End Time" , "Milking Duration (without pause)" , "Total Milk (In Liters)"]

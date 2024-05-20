@@ -1,6 +1,4 @@
 const Table = ({ milkingDetails, milkingTableHeaderData }: any) => {
-    console.log(milkingDetails ,"res");
-    
     
   return (
     <div className="relative overflow-x-auto max-h-[600px] rounded-lg">
@@ -18,9 +16,9 @@ const Table = ({ milkingDetails, milkingTableHeaderData }: any) => {
         </thead>
         <tbody>
           {milkingDetails.length === 0 ? (
-            <div>
-              <h2 className="text-white text-xl">No milking data to display</h2>
-            </div>
+            <tr>
+              <th className="text-white text-xl relative left-1/2 transform -translate-x-1/2">No milking data to display</th>
+            </tr>
           ) : (
             milkingDetails.map((res: any, index: number) => {
               return (
