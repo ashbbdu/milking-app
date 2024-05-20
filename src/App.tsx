@@ -1,17 +1,14 @@
-import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
-import Home from "./pages/Home";
-import MilkingHistory from "./pages/MilkingHistory";
 import Navbar from "./components/Navbar";
+import Routing from "./Routing";
 
 function App() {
+  const [milkingSession , setMilkingSession] = useState<boolean>(false)
   return (
     <div id="main" className="bg-gradient-to-r from-blue-500 to-pink-500 w-full h-[100vh]">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/history" element={<MilkingHistory />} />
-      </Routes>
+      <Navbar milkingSession={milkingSession} />
+      <Routing setMilkingSession={setMilkingSession} />
     </div>
   );
 }

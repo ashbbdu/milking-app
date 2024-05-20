@@ -1,5 +1,4 @@
 const Table = ({ milkingDetails, milkingTableHeaderData }: any) => {
-    console.log(milkingDetails);
     
   return (
     <div className="relative overflow-x-auto max-h-[600px] rounded-lg">

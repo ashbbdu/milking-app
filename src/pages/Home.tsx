@@ -2,7 +2,7 @@ import useSound from "use-sound"
 import MainPage from "./MainPage"
 import SoothingAudio from "../assets/soothing.mp3"
 
-const Home = () => {
+const Home = ({setMilkingSession} : any) => {
     const [play , { pause , stop }] = useSound(SoothingAudio)
   return (
     <div className="flex flex-col items-center justify-center px-4 ">
@@ -11,7 +11,7 @@ const Home = () => {
     </div>
     <div></div>
     <div className="mt-30">
-      <MainPage play={play} pauseSound={pause} stop={stop} />
+      <MainPage setMilkingSession={setMilkingSession} play={play} pauseSound={pause} stop={stop} />
     </div>
   </div>
   )

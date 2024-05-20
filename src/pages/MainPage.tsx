@@ -4,7 +4,7 @@ import Modal from "../components/Modal";
 import { convertSecondsToTimeFormat , dateAndTime } from "../utils/dateConvertor";
 import { formatTime } from "../utils/formatTime";
 
-const MainPage = ({play, pauseSound , stop} : any) => {
+const MainPage = ({play, pauseSound , stop , setMilkingSession} : any) => {
   const [status, setStatus] = useState<String>("Not running");
   const [pauseBtn, setPauseBtn] = useState<boolean>(false);
   const [totalMilk, setTotalMilk] = useState<number>(0);
@@ -94,6 +94,7 @@ const MainPage = ({play, pauseSound , stop} : any) => {
               setStatus("Running");
               startTimeFn()
               play()
+              setMilkingSession(true)
             }}
             className="mt-4 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-bold rounded-lg text-md px-4 py-2 text-center me-2 mb-2 outline-none"
           >
@@ -102,6 +103,7 @@ const MainPage = ({play, pauseSound , stop} : any) => {
         )}
         {status === "Running" && (
           <Modal
+          setMilkingSession={setMilkingSession}
             pauseSound={pauseSound}
             stop={stop}
             header={"Milk Amount (In Litres)"}

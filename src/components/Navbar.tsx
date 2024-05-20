@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo-bg.png";
 
-const Navbar = () => {
+const Navbar = ({milkingSession} : any) => {
+    const navigate = useNavigate()
+    const handleNavigation = () => {
+        milkingSession ? alert("Please stop milking to see the milking history") : navigate("/history")
+    }
   return (
     <div className="px-2 bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-between">
       <div>
@@ -14,9 +18,10 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link className="" to="/history">
-            Milking History
-          </Link>
+            <div className="pointer" onClick={handleNavigation}>
+                Milking History
+            </div>
+         
         </li>
       </ul>
     </div>
